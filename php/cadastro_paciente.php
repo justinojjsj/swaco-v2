@@ -27,7 +27,6 @@
 		header("Location: anamnese-form2.php");	
 	} else {
 		$_SESSION['msg2'] = "erro";
-		//echo "Erro: " . $sql . "<br>" . $conn->error;
 	}
 
 	$conn->close();

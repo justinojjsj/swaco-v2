@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="answer">
-                                <input type="text" id="CPF" name="CPF" value="<?php echo $CPF; ?>" maxlength="11" onkeypress="formatar_mascara(this,'###########')"/>
+                                <input type="text" id="CPF" name="CPF" value="<?php echo $CPF; ?>" required="" maxlength="11" onkeypress="formatar_mascara(this,'###########')"/>
                             </div>
                         </div>
 

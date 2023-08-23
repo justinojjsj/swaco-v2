@@ -27,6 +27,10 @@
     #msg-alert-cpf-invalido{
         background-color: rgb(255, 255, 135);
     }
+
+    #msg-alert-cpf-nop{
+        background-color: red;
+    }
 </style>
 
 <div id="msg-alert-sucesso" class="alert" role="alert" style="display:none;">
@@ -41,6 +45,10 @@
     CPF INVÁLIDO!
 </div>   
 
+<div id="msg-alert-cpf-nop" class="alert" role="alert" style="display:none;">
+    Dados pessoais ainda devem ser cadastrados no sistema!
+</div>  
+
 <script>
 
     var secao = "<?php
@@ -53,6 +61,7 @@
     var container_sucesso = document.querySelector('#msg-alert-sucesso');
     var container_erro = document.querySelector('#msg-alert-erro');
     var container_cpf_invalido = document.querySelector('#msg-alert-cpf-invalido');
+    var container_cpf_nop = document.querySelector('#msg-alert-cpf-nop');
 
     function exibir(info){
         if(info == "sucesso"){
@@ -61,6 +70,8 @@
             container_erro.style.display = 'block';  
         }else if(info == "cpf_invalido"){
             container_cpf_invalido.style.display = 'block';  
+        }else if(info == "cpf_nop"){
+            container_cpf_nop.style.display = 'block';  
         }
     }
 
@@ -68,8 +79,9 @@
         container_sucesso.style.display = 'none';
         container_erro.style.display = 'none';
         container_cpf_invalido.style.display = 'none';
+        container_cpf_nop.style.display = 'none';
     }
-
+    
     exibir(secao);
-    setTimeout(apagar, 2500);
+    setTimeout(apagar, 3500);
 </script>

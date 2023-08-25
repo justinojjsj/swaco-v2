@@ -33,6 +33,7 @@
 	$gravida 		 = $_POST['gravida'];
 	$escovacao 		 = $_POST['escovacao'];
 	$fio_dental		 = $_POST['fio_dental'];
+	$erro			 = 0;
 
 	function validaCPF($cpf) {
 		// Verifica se o número foi informado
@@ -60,7 +61,8 @@
 			$cpf == '77777777777' || 
 			$cpf == '88888888888' || 
 			$cpf == '99999999999') {
-			return "CPF inválido";
+			//return "CPF inválido";
+			return 1;
 		 // Calcula os dígitos verificadores para verificar se o
 		 // CPF é válido
 		 } else {   
@@ -73,56 +75,38 @@
 				$d = ((10 * $d) % 11) % 10;
 				if ($cpf[$c] != $d) {
 					//return "CPF inválido";
-					return 0;
+					return 1;
 				}
 			}
 	 
 			//return "CPF válido";
-			return 1;
+			return 0;
 		}
 	}
 	
 //	echo validaCPF($cpf);
 
-	if (validaCPF($cpf)==1){
+	if (validaCPF($cpf)==0){
 		//echo "VALIDO";
 
 		$result_user = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
 		$resultado_user = mysqli_query($conn, $result_user);
 		
 		if(mysqli_affected_rows($conn)==1){
-			
-			$sql = "INSERT INTO dados_anamnese VALUES";
-			$sql .= "(NULL,'$cpf','$problem','$visit','$medical','$allergies','$allergies_desc','$heart','$heart_desc','$benz','$benz_problem','$dipirona','$dip_problem','$pressure','$press_med','$press_medicine','$renal','$renal_problem','$diabete','$hepatite','$anest','$anest_problem','$protese','$marcap','$transf','$droga','$fuma','$gravida','$escovacao','$fio_dental',NOW(),NULL)";
-			
-			if ($conn->query($sql) === TRUE) {
-				$_SESSION['msg2'] = "sucesso";
-				header("Location: index.php");	
-			} else {
-				$_SESSION['msg2'] = "erro";
-			}
+			//cpf valido e encontrado no banco de dados tabela dados_paciente;
+			$_SESSION['cadastrar_pac'] = "0";
 		}else{
-
-			$sql = "INSERT INTO dados_anamnese VALUES";
-			$sql .= "(NULL,'$cpf','$problem','$visit','$medical','$allergies','$allergies_desc','$heart','$heart_desc','$benz','$benz_problem','$dipirona','$dip_problem','$pressure','$press_med','$press_medicine','$renal','$renal_problem','$diabete','$hepatite','$anest','$anest_problem','$protese','$marcap','$transf','$droga','$fuma','$gravida','$escovacao','$fio_dental',NOW(),NULL)";
-			
-			if ($conn->query($sql) === TRUE) {
-				$_SESSION['msg2'] = "sucesso";
-				header("Location: index.php");	
-			} else {
-				$_SESSION['msg2'] = "erro";
-			}
-
-			//echo "DADOS DO PACIENTE DEVEM SER CADASTRADOS";	
-			$_SESSION['msg2'] = "cpf_nop";
-			header("Location: index.php");
+			//echo "cpf valido, mas usuario nao encontrado na tabela dados_paciente;
+			$_SESSION['cadastrar_pac'] = "1";	
 		}
-
+		include 'processa_cadastro_anamnese.php';
 	}else{
 		//echo "INVALIDO";
 		$_SESSION['msg2'] = "cpf_invalido";
-		header("Location: anamnese-form2.php");
+		include 'cadastro_anamnese.php';
 	}	
+	
 	$conn->close();
+
 	
 ?>

@@ -4,9 +4,7 @@
 ?>
 
 <html>
-    <?php include "./msg-alertas-home.php"; ?>
-
-    
+    <?php include "./msg-alertas-home.php"; ?>    
 
     <head>
         <?php include "./header.php"; ?>

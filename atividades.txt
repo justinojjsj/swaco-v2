@@ -1,3 +1,17 @@
 DADOS PESSOAIS
 
     #Recolar required="" no final, para tornar o campo obrigatório
+
+    cadastro_paciente
+        validar entrada de letras no cpf
+
+        processa_cadastro_anamnese
+            -pegar valor da $cadastrar_pac e fazer validacao
+            -validar se usuário ja existe na tabela dados_paciente também, pois se já existe, não poderá sobrescrever, encaminar para o editar dados.
+
+    Agenda do Dentista
+
+        Remover cor
+    
+    
+    Ir para area restrita

@@ -37,14 +37,12 @@
 	//NAO ESTAFUNCIONANDO O RECEVIMETNO DESSA VARIAVEL QUE VEM DO VERIFICA_CADASTRO_ANAMNESE
 	if(isset($_SESSION['cadastrar_pac'])){		
 		$cadastrar_pac 	 = $_SESSION['cadastrar_pac'];
-		echo $cadastrar_pac;
+		//echo "PROCESSA =".$cadastrar_pac;
 		unset($_SESSION['cadastrar_pac']);
 	}
 	
-	
 	$sql = "INSERT INTO dados_anamnese VALUES";
 	$sql .= "(NULL,'$cpf','$problem','$visit','$medical','$allergies','$allergies_desc','$heart','$heart_desc','$benz','$benz_problem','$dipirona','$dip_problem','$pressure','$press_med','$press_medicine','$renal','$renal_problem','$diabete','$hepatite','$anest','$anest_problem','$protese','$marcap','$transf','$droga','$fuma','$gravida','$escovacao','$fio_dental',NOW(),NULL)";	
-
 
 	if($cadastrar_pac == 0){		
 		
@@ -61,7 +59,7 @@
 		if ($conn->query($sql) === TRUE) {
 			//echo "DADOS DE ANAMNESE CADASTRADO MAS USUÁRIO NAO EXISTE";
 			$_SESSION['msg2'] = "cpf_nop";
-			include 'cadastro_dados.php';
+			include 'cadastro_paciente.php';
 		} else {
 			$_SESSION['msg2'] = "erro";
 		}

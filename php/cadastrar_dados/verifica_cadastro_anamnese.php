@@ -2,7 +2,7 @@
 	session_start();
 	error_reporting(0);
 
-	include 'conexao.php';
+	include '../conexao.php';
 
 	$problem 		 = $_POST['problem'];
 	$cpf 		 	 = $_POST['CPF'];
@@ -89,16 +89,21 @@
 	if (validaCPF($cpf)==0){
 		//echo "VALIDO";
 
+		//echo $cpf;
+
 		$result_user = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
 		$resultado_user = mysqli_query($conn, $result_user);
+		//echo mysqli_affected_rows($conn);
 		
-		if(mysqli_affected_rows($conn)==1){
-			//cpf valido e encontrado no banco de dados tabela dados_paciente;
+		if(mysqli_affected_rows($conn)>=1){
+			//echo "cpf valido e encontrado no banco de dados tabela dados_paciente";
 			$_SESSION['cadastrar_pac'] = "0";
 		}else{
-			//echo "cpf valido, mas usuario nao encontrado na tabela dados_paciente;
+			//echo "cpf valido, mas usuario nao encontrado na tabela dados_paciente";
 			$_SESSION['cadastrar_pac'] = "1";	
 		}
+		
+		//echo "\n\n verifica cadastro =".$_SESSION['cadastrar_pac'];
 		include 'processa_cadastro_anamnese.php';
 	}else{
 		//echo "INVALIDO";
@@ -106,7 +111,5 @@
 		include 'cadastro_anamnese.php';
 	}	
 	
-	$conn->close();
-
-	
+	$conn->close();	
 ?>

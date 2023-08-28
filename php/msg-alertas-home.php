@@ -83,5 +83,5 @@
     }
     
     exibir(secao);
-    setTimeout(apagar, 3500);
+    setTimeout(apagar, 4500);
 </script>

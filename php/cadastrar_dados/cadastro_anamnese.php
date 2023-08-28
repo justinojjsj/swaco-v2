@@ -32,7 +32,7 @@
 
                 <div class="line">
 
-                    <form method="POST"	action="./processa_cadastro_anamnese.php">
+                    <form method="POST"	action="./verifica_cadastro_anamnese.php">
 
                         <?php include "./return-menu.php"; ?>
 

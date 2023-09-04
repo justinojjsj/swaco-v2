@@ -9,6 +9,8 @@ DADOS PESSOAIS
             -pegar valor da $cadastrar_pac e fazer validacao
             -validar se usuário ja existe na tabela dados_paciente também, pois se já existe, não poderá sobrescrever, encaminar para o editar dados.
 
+            -ENVIANDO PARA EDITAR_ANAMNESE, mas precisa fazer receber via get ou post # RESOLVIDO
+
     Agenda do Dentista
 
         Remover cor

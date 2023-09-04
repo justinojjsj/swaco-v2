@@ -95,12 +95,18 @@
 		$resultado_user = mysqli_query($conn, $result_user);
 		//echo mysqli_affected_rows($conn);
 		
-		if(mysqli_affected_rows($conn)>=1){
+		if(mysqli_affected_rows($conn)==1){
 			//echo "cpf valido e encontrado no banco de dados tabela dados_paciente";
 			$_SESSION['cadastrar_pac'] = "0";
-		}else{
+		}elseif(mysqli_affected_rows($conn)==0){
 			//echo "cpf valido, mas usuario nao encontrado na tabela dados_paciente";
 			$_SESSION['cadastrar_pac'] = "1";	
+		}else{
+			//echo "usuario já existe, vc será direcionado para edição de anamnese"
+			$CPF = $cpf;
+			$_SESSION['CPF'] = $CPF;
+			//echo $_SESSION['CPF'];
+			include '../editar_dados/editar_anamnese.php';
 		}
 		
 		//echo "\n\n verifica cadastro =".$_SESSION['cadastrar_pac'];

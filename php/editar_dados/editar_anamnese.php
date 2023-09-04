@@ -1,7 +1,17 @@
 <?php
     session_start();
     include_once("conexao.php");
-    $CPF = filter_input(INPUT_GET, 'CPF');
+
+
+    //$CPF = filter_input(INPUT_GET, 'CPF');
+    //$CPF = filter_input(INPUT_POST, 'CPF');
+
+    if(filter_input(INPUT_GET, 'CPF')){
+        $CPF = filter_input(INPUT_GET, 'CPF');
+    }elseif(filter_input(INPUT_POST, 'CPF')){
+        $CPF = filter_input(INPUT_POST, 'CPF');
+    }
+
     $result_usuario = "SELECT * FROM dados_anamnese WHERE CPF = '$CPF'";
     $resultado_usuario = mysqli_query($conn, $result_usuario);
     $row_usuario = mysqli_fetch_assoc($resultado_usuario);

@@ -84,38 +84,67 @@
 		}
 	}
 	
-//	echo validaCPF($cpf);
+
+	//VERIFICAR SE USUÁRIO EXISTE NO dados_paciente 
+
+	$verifica_usuario_dados = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
+	$resultado_usuario_dados = mysqli_query($conn, $verifica_usuario_dados);
+
+
+	//VERIFICAR SE USUÁRIO EXISTE NO dados_anamnese 
+
+	$verifica_usuario_anamnese = "SELECT * FROM dados_anamnese WHERE CPF='$cpf'";		
+	$resultado_usuario_anamnese = mysqli_query($conn, $verifica_usuario_anamnese);
+
+
+	/*
+	if(mysqli_num_rows($resultado_usuario_anamnese)>0){
+
+		//usuario ja tem anamnese cadastrada, portanto, vai para edicao de anamnese
+		$CPF = $cpf;
+		$_SESSION['CPF'] = $CPF;
+		//echo $_SESSION['CPF'];
+		include '../editar_dados/editar_anamnese.php';
+	}else{
+		if(mysqli_num_rows($resultado_usuario_dados)>0){
+			//usuário ja tem anamnese e também já tem seus dados cadastrados, volta para tela inicial
+			//$_SESSION['cadastrar_pac'] = "0";
+
+
+			//ENVIAR UMA MENSAGEM DE USUARIO JÁ CADASTRADO NO SISTEMA
+			header("Location: ../index.php");	
+			
+		}elseif(mysqli_num_rows($resultado_usuario_dados)==0){
+			//usuário não possui anamnese cadastrada
+			$_SESSION['cadastrar_pac'] = "1";	
+			include 'processa_cadastro_anamnese.php';
+		}
+	}
+
+	*/
+
 
 	if (validaCPF($cpf)==0){
-		//echo "VALIDO";
 
-		//echo $cpf;
-
-		$result_user = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
-		$resultado_user = mysqli_query($conn, $result_user);
-		//echo mysqli_affected_rows($conn);
-		
-		if(mysqli_affected_rows($conn)==1){
-			//echo "cpf valido e encontrado no banco de dados tabela dados_paciente";
-			$_SESSION['cadastrar_pac'] = "0";
-		}elseif(mysqli_affected_rows($conn)==0){
-			//echo "cpf valido, mas usuario nao encontrado na tabela dados_paciente";
-			$_SESSION['cadastrar_pac'] = "1";	
-		}else{
-			//echo "usuario já existe, vc será direcionado para edição de anamnese"
+		if((mysqli_num_rows($resultado_usuario_anamnese)==0) and mysqli_num_rows($resultado_usuario_dados)==0){
+			$_SESSION['cadastrar_pac'] = "0";	
+			include 'processa_cadastro_anamnese.php';
+		}elseif((mysqli_num_rows($resultado_usuario_anamnese)==0) and mysqli_num_rows($resultado_usuario_dados)==1){
+			$_SESSION['cadastrar_pac'] = "1";
+			include 'processa_cadastro_anamnese.php';
+		}elseif((mysqli_num_rows($resultado_usuario_anamnese)==1) and mysqli_num_rows($resultado_usuario_dados)==0){
 			$CPF = $cpf;
 			$_SESSION['CPF'] = $CPF;
-			//echo $_SESSION['CPF'];
-			include '../editar_dados/editar_anamnese.php';
+			include '../editar_dados/editar_anamnese.php';		
+		}elseif((mysqli_num_rows($resultado_usuario_anamnese)==1) and mysqli_num_rows($resultado_usuario_dados)==1){
+			$_SESSION['CPF'] = $CPF;
+			$_SESSION['msg2'] = "cpf_nop";
+			include '../editar_dados/editar_anamnese.php';		
 		}
-		
-		//echo "\n\n verifica cadastro =".$_SESSION['cadastrar_pac'];
-		include 'processa_cadastro_anamnese.php';
 	}else{
-		//echo "INVALIDO";
 		$_SESSION['msg2'] = "cpf_invalido";
-		include 'cadastro_anamnese.php';
-	}	
+		header("Location: ./cadastro_anamnese.php");	
+	}
 	
 	$conn->close();	
 ?>

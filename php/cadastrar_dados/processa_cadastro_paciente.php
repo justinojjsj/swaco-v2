@@ -1,5 +1,5 @@
 <?php 
-	//session_start();
+	session_start();
 	include '../conexao.php';
 
 	$nome 			 = $_POST['nome'];
@@ -22,9 +22,11 @@
 	$sql .= "(NULL,'$cpf','$nome','$celular','$idade','$estado_civil','$email','$work','$gender','$convenio','$CEP','$ad_number','$street','$district','$city','$state',NOW(),NULL)";
 
 	if ($conn->query($sql) === TRUE) {
-		$_SESSION['msg'] = $cpf;
-		$_SESSION['msg2'] = "sucesso";
-		include 'cadastro_anamnese.php';
+		$CPF = $cpf;
+		$_SESSION['msg'] = $CPF;
+		//$_SESSION['msg2'] = "sucesso";
+		header("Location: ./cadastro_anamnese.php");	
+		//include 'cadastro_anamnese.php';
 	} else {
 		$_SESSION['msg2'] = "erro";
 	}

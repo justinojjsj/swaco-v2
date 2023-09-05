@@ -41,7 +41,7 @@
     Cadastro não realizado!
 </div>  
 
-<div id="msg-alert-cpf-invalido" class="alert" role="alert" style="display:none;">
+<div id="msg-alert-cpf-invalido" class="alert" role="alert" style="display:none; color:black;">
     CPF INVÁLIDO!
 </div>   
 

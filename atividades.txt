@@ -1,19 +1,35 @@
 DADOS PESSOAIS
 
-    #Recolar required="" no final, para tornar o campo obrigatório
 
-    cadastro_paciente
-        validar entrada de letras no cpf
 
+    ### DADOS PESSOAIS OK
+
+        cadastro_paciente OK
+                -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
+
+        verifica_cadastro_paciente OK
+                -> Validação dos campos desativada
+                -> Validação de CPF ativado
+
+        processa_cadastro_paciente OK        
+
+    ### FICHA DE ANAMNESE
+
+        cadastro_anamnese
+                -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
+                
+                *** Exibir alert de usuario cadastrado com sucesso
+
+        verifica_cadastro_anamnese
+                *** Continuar validação dos campos
+        
         processa_cadastro_anamnese
             -pegar valor da $cadastrar_pac e fazer validacao
-            -validar se usuário ja existe na tabela dados_paciente também, pois se já existe, não poderá sobrescrever, encaminar para o editar dados.
 
-            -ENVIANDO PARA EDITAR_ANAMNESE, mas precisa fazer receber via get ou post # RESOLVIDO
-
-    Agenda do Dentista
+    ### AGENDA DO DENTSTA
 
         Remover cor
     
+    ### ÁREA RESTRITA
     
-    Ir para area restrita
+        

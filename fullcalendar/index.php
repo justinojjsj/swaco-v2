@@ -56,8 +56,13 @@
     <!-- FIM ALERTAS SOBRE OS EVENTOS -->
 
     <div id="calendar-menu">
-      <div id="btn-return" class="btn-home"><a href="../php/index.php" style="text-decoration:none"><p>.</p></a></div> 
+      
+      <a href="../php/index.php" class="linkum">
+        <div id="btn-return" class="btn-home"></div>                    
+      </a>
     </div>
+
+    
 
     <div id='calendar'></div>
 

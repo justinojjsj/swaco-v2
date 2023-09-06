@@ -16,7 +16,7 @@
                 $CPF = $_SESSION['msg'];
                 unset($_SESSION['msg']);
             }else{
-                $CPF = 'Digite seu CPF';
+                $CPF = 'Digite seu CPF (somente com números)';
             } 
         ?>
     </head>
@@ -34,7 +34,7 @@
 
                     <form method="POST"	action="./cadastro_anamnese.php">
 
-                        <?php include "anamnese-menu.php"; ?>
+                        <?php include "return-menu.php"; ?>
 
                         <!-- INÍCIO DA APRESENTACAO --->
 
@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="answer">
-                                <input type="text" id="CPF" name="CPF" value="<?php echo $CPF; ?>" maxlength="14" onkeypress="formatar_mascara(this,'###.###.###-##')"/>
+                                <input type="text" id="CPF" name="CPF" value="<?php echo $CPF; ?>" required="" maxlength="11" onkeypress="formatar_mascara(this,'###########')"/>
                             </div>
                         </div>
 

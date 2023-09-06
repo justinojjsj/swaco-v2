@@ -12,6 +12,7 @@
         font-size: 20px;
         font-weight: 800;
         color: white;
+        text-shadow: rgb(252, 244, 244) 0.1em 0.1em 0.8em;
         opacity: 0.7;
     }
 
@@ -22,6 +23,14 @@
     #msg-alert-erro{
         background-color: red;
     }
+
+    #msg-alert-cpf-invalido{
+        background-color: rgb(255, 255, 135);
+    }
+
+    #msg-alert-cpf-nop{
+        background-color: red;
+    }
 </style>
 
 <div id="msg-alert-sucesso" class="alert" role="alert" style="display:none;">
@@ -30,7 +39,15 @@
 
 <div id="msg-alert-erro" class="alert" role="alert" style="display:none;">
     Cadastro não realizado!
+</div>  
+
+<div id="msg-alert-cpf-invalido" class="alert" role="alert" style="display:none;">
+    CPF INVÁLIDO!
 </div>   
+
+<div id="msg-alert-cpf-nop" class="alert" role="alert" style="display:none;">
+    Dados pessoais ainda devem ser cadastrados no sistema!
+</div>  
 
 <script>
 
@@ -43,20 +60,28 @@
 
     var container_sucesso = document.querySelector('#msg-alert-sucesso');
     var container_erro = document.querySelector('#msg-alert-erro');
+    var container_cpf_invalido = document.querySelector('#msg-alert-cpf-invalido');
+    var container_cpf_nop = document.querySelector('#msg-alert-cpf-nop');
 
     function exibir(info){
         if(info == "sucesso"){
             container_sucesso.style.display = 'block';  
         }else if(info == "erro"){
             container_erro.style.display = 'block';  
+        }else if(info == "cpf_invalido"){
+            container_cpf_invalido.style.display = 'block';  
+        }else if(info == "cpf_nop"){
+            container_cpf_nop.style.display = 'block';  
         }
     }
 
     function apagar(info){
         container_sucesso.style.display = 'none';
         container_erro.style.display = 'none';
+        container_cpf_invalido.style.display = 'none';
+        container_cpf_nop.style.display = 'none';
     }
-
+    
     exibir(secao);
-    setTimeout(apagar, 2500);
+    setTimeout(apagar, 3500);
 </script>

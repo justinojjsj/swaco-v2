@@ -119,7 +119,7 @@ body{
 	background: #69e673;
 }
 
-#btn-anamnese{
+#btn-pessoais{
 	background-color: #409643;	
 }
 
@@ -127,11 +127,11 @@ body{
 	background-color: #d8d50d;
 }
 
-#btn-consulta{
+#btn-anamnese{
 	background-color: #ee9208;
 }
 
-#btn-outro{
+#btn-restrita{
 	background-color: #f4365f;
 }
 

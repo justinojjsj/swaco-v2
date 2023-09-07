@@ -15,16 +15,12 @@ DADOS PESSOAIS
 
     ### FICHA DE ANAMNESE
 
-        cadastro_anamnese
+        cadastro_anamnese OK
                 -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
-                
-                *** Exibir alert de usuario cadastrado com sucesso
 
-        verifica_cadastro_anamnese
-                *** Continuar validação dos campos
-        
-        processa_cadastro_anamnese
-            -pegar valor da $cadastrar_pac e fazer validacao
+        verifica_cadastro_anamnese OK
+                        
+        processa_cadastro_anamnese OK
 
     ### AGENDA DO DENTSTA
 

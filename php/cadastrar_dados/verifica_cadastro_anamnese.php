@@ -77,14 +77,12 @@
 					//return "CPF inválido";
 					return 1;
 				}
-			}
-	 
+			}	 
 			//return "CPF válido";
 			return 0;
 		}
 	}
 	
-
 	//VERIFICAR SE USUÁRIO EXISTE NO dados_paciente 
 
 	$verifica_usuario_dados = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
@@ -95,34 +93,6 @@
 
 	$verifica_usuario_anamnese = "SELECT * FROM dados_anamnese WHERE CPF='$cpf'";		
 	$resultado_usuario_anamnese = mysqli_query($conn, $verifica_usuario_anamnese);
-
-
-	/*
-	if(mysqli_num_rows($resultado_usuario_anamnese)>0){
-
-		//usuario ja tem anamnese cadastrada, portanto, vai para edicao de anamnese
-		$CPF = $cpf;
-		$_SESSION['CPF'] = $CPF;
-		//echo $_SESSION['CPF'];
-		include '../editar_dados/editar_anamnese.php';
-	}else{
-		if(mysqli_num_rows($resultado_usuario_dados)>0){
-			//usuário ja tem anamnese e também já tem seus dados cadastrados, volta para tela inicial
-			//$_SESSION['cadastrar_pac'] = "0";
-
-
-			//ENVIAR UMA MENSAGEM DE USUARIO JÁ CADASTRADO NO SISTEMA
-			header("Location: ../index.php");	
-			
-		}elseif(mysqli_num_rows($resultado_usuario_dados)==0){
-			//usuário não possui anamnese cadastrada
-			$_SESSION['cadastrar_pac'] = "1";	
-			include 'processa_cadastro_anamnese.php';
-		}
-	}
-
-	*/
-
 
 	if (validaCPF($cpf)==0){
 
@@ -140,6 +110,8 @@
 			$_SESSION['CPF'] = $CPF;
 			$_SESSION['msg2'] = "cpf_nop";
 			include '../editar_dados/editar_anamnese.php';		
+		}else{
+			echo "Usuário duplicado no sistema";
 		}
 	}else{
 		$_SESSION['msg2'] = "cpf_invalido";

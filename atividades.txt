@@ -1,6 +1,5 @@
-DADOS PESSOAIS
-
-
+SWACO-V2
+    #Melhorias e correções no código
 
     ### DADOS PESSOAIS OK
 
@@ -24,8 +23,19 @@ DADOS PESSOAIS
 
     ### AGENDA DO DENTSTA
 
-        Remover cor
+        -> Campo color no banco de dados agora deve ser NULL
     
     ### ÁREA RESTRITA
     
+        *** Corrigir botões voltar (dados, anamnese e consulta) e botão página inicial
+        *** Implementar item de notificação para usuários que tem dados pessoais cadastrados, mas não tem anamense
+        *** Implementar item de notificação botão para usuários que tem anamnese cadastrada, mas não tem dados pessoais
+
+        CONSULTAS
+                *** Remover cor das consultas
+                *** Corrigir formato das datas
+                *** Colocar pesquisa por nome
+                *** Implementar botão para editar consultas (encaminhando para o fullcalendar)
         
+        EDITAR ANAMNESE 
+                *** Colocar um botão para imprimir a anamnese  

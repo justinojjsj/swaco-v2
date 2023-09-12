@@ -40,7 +40,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-							<button type="button" class="btn btn-info" style='width:150px;'><a href="index.php" style="text-decoration:none; color:white;">Voltar</a></button>		
+						<a href="index.php" style="text-decoration:none; color:white;"><button type="button" class="btn btn-info" style='width:150px;'>Voltar</button></a>
 					</li>
 
 				</ul>
@@ -61,10 +61,10 @@
 				<tr>
 				<th scope="col">#</th>
 				<th scope="col">Nome</th>
-				<th scope="col">Cor</th>
 				<th scope="col">Início</th>
 				<th scope="col">Fim</th>
 				<th scope="col">Descrição</th>
+				<th scope="col">Alterar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,24 +72,100 @@
 					$contador = 0;
 					while($user_data = mysqli_fetch_assoc($result)){
 						$contador++;
+						$data_inicio = date('d/m/Y H:i:s',strtotime($user_data['start']));
+						$data_fim = date('d/m/Y H:i:s',strtotime($user_data['end']));
+						
 						echo "<tr>";
 						echo "<td>".$contador."</td>";
 						echo "<td>".$user_data['title']."</td>";
-						echo 
-						"<td>
-							<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-palette' viewBox='0 0 16 16' color='$user_data[color]'>
-								<path d='M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z'/>
-								<path d='M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z'/>
-							</svg>
-						</td>";
-						echo "<td>".$user_data['start']."</td>";
-						echo "<td>".$user_data['end']."</td>";
+						echo "<td>".$data_inicio."</td>";
+						echo "<td>".$data_fim."</td>";
 						echo "<td>".$user_data['url']."</td>";
+						echo 
+						"<td> 
+							<a class='btn btn-sm btn-primary' id='showDialog'>
+								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
+									<path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
+								</svg>
+							</a>
+	
+							<a class='btn btn-sm btn-danger' href='proc_apagar_usuario.php?id_pac=$user_data[title]' data-confirm='Tem certeza de que deseja excluir o usuário selecionado?'>
+								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
+									<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z'/>
+									<path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z'/>
+								</svg>
+							</a>	
+							
+						</td>";
 						echo "</tr>";
 					}
 				?>
 			</tdoby>
 			</table>
 		</div>
+
+
+
+		
+
+
+
+		<dialog id="favDialog">
+			<form>
+				<p>
+				<label>
+					Favorite animal:
+					<select>
+					<option value="default">Choose…</option>
+					<option>Brine shrimp</option>
+					<option>Red panda</option>
+					<option>Spider monkey</option>
+					</select>
+				</label>
+				</p>
+				<div>
+					<button value="cancel" formmethod="dialog">Cancel</button>
+					<button id="confirmBtn" value="default">Confirm</button>
+				</div>
+			</form>
+		</dialog>
+		
+		<p>
+		<button id="showDialog">Show the dialog</button>
+		</p>
+		<output></output>
+
+		<script>
+			const showButton = document.getElementById("showDialog");
+			const favDialog = document.getElementById("favDialog");
+			const outputBox = document.querySelector("output");
+			const selectEl = favDialog.querySelector("select");
+			const confirmBtn = favDialog.querySelector("#confirmBtn");
+
+			// "Show the dialog" button opens the <dialog> modally
+			showButton.addEventListener("click", () => {
+			favDialog.showModal();
+			});
+
+			// "Favorite animal" input sets the value of the submit button
+			selectEl.addEventListener("change", (e) => {
+			confirmBtn.value = selectEl.value;
+			});
+
+			// "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
+			favDialog.addEventListener("close", (e) => {
+			outputBox.value =
+				favDialog.returnValue === "default"
+				? "No return value."
+				: `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
+			});
+
+			// Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
+			confirmBtn.addEventListener("click", (event) => {
+			event.preventDefault(); // We don't want to submit this fake form
+			favDialog.close(selectEl.value); // Have to send the select box value here.
+			});
+		</script>
+
 	</body>
 </html>

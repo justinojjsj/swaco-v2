@@ -10,12 +10,19 @@
         $CPF = filter_input(INPUT_GET, 'CPF');
     }elseif(filter_input(INPUT_POST, 'CPF')){
         $CPF = filter_input(INPUT_POST, 'CPF');
+    }else{
+        echo "USUARIO NAO POSSUI ANAMNESE CADASTRADA";
     }
 
     $result_usuario = "SELECT * FROM dados_anamnese WHERE CPF = '$CPF'";
     $resultado_usuario = mysqli_query($conn, $result_usuario);
     $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
+    if(mysqli_num_rows($resultado_usuario)==0){      
+        $_SESSION['msg'] = $CPF;
+        $_SESSION['msg2'] = "cpf_nop";  
+		header("Location: ../cadastrar_dados/cadastro_anamnese.php");	
+    }
 
     $result_usuario2 = "SELECT * FROM dados_paciente WHERE CPF = '$CPF'";
     $resultado_usuario2 = mysqli_query($conn, $result_usuario2);
@@ -37,7 +44,7 @@
     <div class="middle">
         <div id="home-dashboard">
 
-            <?php include "menu.php"; ?>
+            <?php include "return-menu.php"; ?>
 
             <div id="information" class="form-group">
                 </br>
@@ -70,7 +77,7 @@
                     </div>
 
                     <div class="answer">
-                        <input type="text" name="CPF" placeholder="123.456.789-11" value="<?php echo $row_usuario['CPF']; ?>" maxlength="14" onkeypress="formatar_mascara(this,'###.###.###-##')" readonly/>
+                        <input type="text" name="CPF" placeholder="123.456.789-11" value="<?php echo $row_usuario['CPF']; ?>" maxlength="11" readonly/>
                     </div>
                 </div>
 

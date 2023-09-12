@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                                <button type="button" class="btn btn-info" style='width:150px;'><a href="../index.php" style="text-decoration:none; color:white;">Página inicial</a></button>		
+                            <a href="../index.php" style="text-decoration:none; color:white;"><button type="button" class="btn btn-info" style='width:150px;'>Página inicial</button></a>
                         </li>
  
                     </ul>

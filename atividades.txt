@@ -24,18 +24,19 @@ SWACO-V2
     ### AGENDA DO DENTSTA
 
         -> Campo color no banco de dados agora deve ser NULL
+
+        *** CORRIGIR CAMPO DE COLOCAR DATAS (TIRAR MASCARA)
     
     ### ÁREA RESTRITA
     
-        *** Corrigir botões voltar (dados, anamnese e consulta) e botão página inicial
         *** Implementar item de notificação para usuários que tem dados pessoais cadastrados, mas não tem anamense
         *** Implementar item de notificação botão para usuários que tem anamnese cadastrada, mas não tem dados pessoais
 
         CONSULTAS
-                *** Remover cor das consultas
-                *** Corrigir formato das datas
-                *** Colocar pesquisa por nome
-                *** Implementar botão para editar consultas (encaminhando para o fullcalendar)
+                *** Remover cor das consultas OK
+                *** Corrigir formato das datas OK
+                *** Colocar pesquisa por nome - NÃO OK - CONSULTA É INDIVIDUAL POR USUÁRIO
+                *** Implementar botão para editar consultas 
         
         EDITAR ANAMNESE 
                 *** Colocar um botão para imprimir a anamnese  

@@ -10,6 +10,12 @@
 	<head>
 
 		<?php include "./header.php"; ?>
+		<!-- BOTAO CALENDARIO -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    	<script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+   		<!--<link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />-->
+		<link href="./css/dataehora.css" rel="stylesheet" type="text/css" />
+		<!-- FIM BOTAO CALENDARIO -->
 
 		<style>
 			h1{
@@ -83,11 +89,11 @@
 						echo "<td>".$user_data['url']."</td>";
 						echo 
 						"<td> 
-							<a class='btn btn-sm btn-primary' id='showDialog'>
-								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
-									<path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
-								</svg>
-							</a>
+							<div style='height: 5px; background-color:#FFF !important; display:inline; '>
+								
+								<div id='input' style='z-index:100'></div>
+								
+							</div>
 	
 							<a class='btn btn-sm btn-danger' href='proc_apagar_usuario.php?id_pac=$user_data[title]' data-confirm='Tem certeza de que deseja excluir o usuário selecionado?'>
 								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
@@ -97,6 +103,7 @@
 							</a>	
 							
 						</td>";
+						echo "<td>".$user_data['url']."</td>";
 						echo "</tr>";
 					}
 				?>
@@ -104,68 +111,9 @@
 			</table>
 		</div>
 
-
-
-		
-
-
-
-		<dialog id="favDialog">
-			<form>
-				<p>
-				<label>
-					Favorite animal:
-					<select>
-					<option value="default">Choose…</option>
-					<option>Brine shrimp</option>
-					<option>Red panda</option>
-					<option>Spider monkey</option>
-					</select>
-				</label>
-				</p>
-				<div>
-					<button value="cancel" formmethod="dialog">Cancel</button>
-					<button id="confirmBtn" value="default">Confirm</button>
-				</div>
-			</form>
-		</dialog>
-		
-		<p>
-		<button id="showDialog">Show the dialog</button>
-		</p>
-		<output></output>
-
 		<script>
-			const showButton = document.getElementById("showDialog");
-			const favDialog = document.getElementById("favDialog");
-			const outputBox = document.querySelector("output");
-			const selectEl = favDialog.querySelector("select");
-			const confirmBtn = favDialog.querySelector("#confirmBtn");
-
-			// "Show the dialog" button opens the <dialog> modally
-			showButton.addEventListener("click", () => {
-			favDialog.showModal();
-			});
-
-			// "Favorite animal" input sets the value of the submit button
-			selectEl.addEventListener("change", (e) => {
-			confirmBtn.value = selectEl.value;
-			});
-
-			// "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-			favDialog.addEventListener("close", (e) => {
-			outputBox.value =
-				favDialog.returnValue === "default"
-				? "No return value."
-				: `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
-			});
-
-			// Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
-			confirmBtn.addEventListener("click", (event) => {
-			event.preventDefault(); // We don't want to submit this fake form
-			favDialog.close(selectEl.value); // Have to send the select box value here.
-			});
-		</script>
+       		$('#input').datetimepicker({ footer: true, modal: true });
+    	</script>
 
 	</body>
 </html>

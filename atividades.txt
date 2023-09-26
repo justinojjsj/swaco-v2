@@ -32,8 +32,7 @@ SWACO-V2
         *** Implementar item de notificação para usuários que tem dados pessoais cadastrados, mas não tem anamense
         *** Implementar item de notificação botão para usuários que tem anamnese cadastrada, mas não tem dados pessoais
 
-        CONSULTAS
-                *** Finalizar botão apagar consulta
+        CONSULTAS OK                
         
         EDITAR ANAMNESE 
                 *** Colocar um botão para imprimir a anamnese
@@ -41,3 +40,4 @@ SWACO-V2
         EDITAR DADOS PESSOAIS
 
                 *** Quando editar nome, alterar também a tabel events  
+                        ***alterarndo cad_event.php para cadastrar CPF junto. CPF ja cadastrando, mas ta dando um errro de mysql.

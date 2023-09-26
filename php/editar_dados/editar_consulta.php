@@ -5,7 +5,7 @@
 
     if(filter_input(INPUT_GET, 'id_pac')){
         $id_pac = filter_input(INPUT_GET, 'id_pac');
-        $result_usuario = "SELECT * FROM events WHERE title = '$id_pac'";
+        $result_usuario = "SELECT * FROM events WHERE id = '$id_pac'";
     }
 
     //$id_pac = filter_input(INPUT_GET, 'id_pac', FILTER_SANITIZE_NUMBER_INT);

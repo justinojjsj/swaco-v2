@@ -200,7 +200,7 @@
                           $resultado_usuario = mysqli_query($conn, $result_usuarios);                
 
                           while($row_usuarios = mysqli_fetch_assoc($resultado_usuario)){ ?>
-                            <option value="<?php echo $row_usuarios['nome']; ?>"><?php echo $row_usuarios['nome'];?></option> <?php
+                            <option value="<?php echo $row_usuarios['nome'];?>"><?php echo $row_usuarios['nome'];?></option> <?php
                           }                            
                       ?>
                   </select>

@@ -1,5 +1,46 @@
 <?php
 session_start();
+include '../conexao.php';
+
+//$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+$title = filter_input(INPUT_POST, 'title');
+$start = filter_input(INPUT_POST, 'start');
+$end = filter_input(INPUT_POST, 'end');
+$url = filter_input(INPUT_POST, 'url');
+
+$data_start = str_replace('/', '-', $start);
+$data_start_conv = date("Y-m-d H:i:s", strtotime($data_start));
+
+$data_end = str_replace('/', '-', $end);
+$data_end_conv = date("Y-m-d H:i:s", strtotime($data_end));
+
+
+$result_usuarios = "SELECT * FROM dados_paciente WHERE nome='$title'";
+$resultado_usuario = mysqli_query($conn, $result_usuarios);
+$row_usuarios = mysqli_fetch_assoc($resultado_usuario);  
+//echo $row_usuarios['CPF'];
+
+$cad_evento = "INSERT INTO events VALUES (NULL, '$title', '$row_usuarios[CPF]', '$data_start_conv', '$data_end_conv', '$url', NULL)";
+$cadastra_evento = mysqli_query($conn, $cad_evento);
+
+if ($conn->query($cadastra_evento) === TRUE) {
+    //echo 'OIIII';
+    $retorna = ['sit' => true, 'msg' => 'sucesso'];
+    $_SESSION['msg'] = 'sucesso';
+    header("Location: ../index.php");	
+} else {
+    $retorna = ['sit' => false, 'msg' => 'erro'];
+    header("Location: ../index.php");
+}
+
+$conn->close();
+
+header('Content-Type: application/json');
+echo json_encode($retorna);
+
+/*
+
+
 
 include_once '../php/conexao.php';
 
@@ -38,4 +79,4 @@ if ($insert_event->execute()) {
 
 header('Content-Type: application/json');
 echo json_encode($retorna);
-
+*/

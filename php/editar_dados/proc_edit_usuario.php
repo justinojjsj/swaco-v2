@@ -25,6 +25,9 @@ $state = filter_input(INPUT_POST, 'state');
 //echo "Celular: $celular <br>";
 //echo "Idade: $idade <br>";
 
+$dado_consulta = "UPDATE events SET title='$nome' WHERE CPF='$CPF'";
+$exec_dado_consulta = mysqli_query($conn, $dado_consulta);
+
 $result_usuario = "UPDATE dados_paciente SET nome='$nome', celular='$celular', idade='$idade', CPF='$CPF', estado_civil='$estado_civil', email='$email', work='$work', gender='$gender', convenio='$convenio', CEP='$CEP', ad_number='$ad_number', street='$street', district='$district', city='$city', state='$state', modificado=NOW() WHERE id_pac='$id_pac'";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 

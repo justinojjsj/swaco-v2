@@ -23,7 +23,7 @@ SWACO-V2
 
     ### AGENDA DO DENTSTA
 
-        -> Campo cor no banco de dados agora deve ser NULL
+        -> Campo cor no banco de dados agora deve ser NULL e varchar(30)
 
         *** CORRIGIR CAMPO DE COLOCAR DATAS (TIRAR MASCARA)
     
@@ -40,4 +40,4 @@ SWACO-V2
         EDITAR DADOS PESSOAIS
 
                 *** Quando editar nome, alterar também a tabel events  
-                        ***alterarndo cad_event.php para cadastrar CPF junto. CPF ja cadastrando, mas ta dando um errro de mysql.
+                        

@@ -4,7 +4,6 @@
 	$senha = "my-secret-pw";
 	$dbname = "projeto-db";
 	
-	//Criar a conexao
 	$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 	
 	if(!$conn){
@@ -14,4 +13,3 @@
 	}	
 	
 ?>
-

@@ -1,19 +1,20 @@
 <?php
     session_start();
-    error_reporting(0);
+    //error_reporting(0);
 ?>
 
 <html>
-
+    
     <?php include "../msg-alertas-home.php"; ?>       
+    
 
     <head>
         <?php 
             include "./header.php"; 
 
             if(isset($_SESSION['msg'])){
-                //echo $_SESSION['msg'];
                 $CPF = $_SESSION['msg'];
+                //echo $_SESSION['msg'];
                 unset($_SESSION['msg']);
             }else{
                 $CPF = 'Digite seu CPF (somente com números)';
@@ -32,7 +33,7 @@
 
                 <div class="line">
 
-                    <form method="POST"	action="./processa_cadastro_anamnese.php">
+                    <form method="POST"	action="./verifica_cadastro_anamnese.php">
 
                         <?php include "./return-menu.php"; ?>
 

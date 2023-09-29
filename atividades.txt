@@ -1,17 +1,43 @@
-DADOS PESSOAIS
+SWACO-V2
+    #Melhorias e correções no código
 
-    #Recolar required="" no final, para tornar o campo obrigatório
+    ### DADOS PESSOAIS OK
 
-    cadastro_paciente
-        validar entrada de letras no cpf
+        cadastro_paciente OK
+                -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
 
-        processa_cadastro_anamnese
-            -pegar valor da $cadastrar_pac e fazer validacao
-            -validar se usuário ja existe na tabela dados_paciente também, pois se já existe, não poderá sobrescrever, encaminar para o editar dados.
+        verifica_cadastro_paciente OK
+                -> Validação dos campos desativada
+                -> Validação de CPF ativado
 
-    Agenda do Dentista
+        processa_cadastro_paciente OK        
 
-        Remover cor
+    ### FICHA DE ANAMNESE
+
+        cadastro_anamnese OK
+                -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
+
+        verifica_cadastro_anamnese OK
+                        
+        processa_cadastro_anamnese OK
+
+    ### AGENDA DO DENTSTA
+
+        -> Campo cor no banco de dados agora deve ser NULL e varchar(30)
+
+        *** CORRIGIR CAMPO DE COLOCAR DATAS (TIRAR MASCARA)
     
+    ### ÁREA RESTRITA
     
-    Ir para area restrita
+        *** Implementar item de notificação para usuários que tem dados pessoais cadastrados, mas não tem anamense
+        *** Implementar item de notificação botão para usuários que tem anamnese cadastrada, mas não tem dados pessoais
+
+        CONSULTAS OK                
+        
+        EDITAR ANAMNESE 
+                *** Colocar um botão para imprimir a anamnese
+
+        EDITAR DADOS PESSOAIS
+
+                *** Quando editar nome, alterar também a tabel events  
+                        

@@ -61,9 +61,7 @@
         <div id="btn-return" class="btn-home"></div>                    
       </a>
     </div>
-
-    
-
+ 
     <div id='calendar'></div>
 
     <!-- INÍCIO DO VISUALIZAR E APAGAR EVENTO -->
@@ -115,6 +113,7 @@
                       </div>
                     </div>
 
+                    <!--
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label">Color</label>
                       <div class="col-sm-10">
@@ -133,6 +132,7 @@
                         </select>
                       </div>
                     </div>
+                    -->
 
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label">Início</label>
@@ -200,13 +200,14 @@
                           $resultado_usuario = mysqli_query($conn, $result_usuarios);                
 
                           while($row_usuarios = mysqli_fetch_assoc($resultado_usuario)){ ?>
-                            <option value="<?php echo $row_usuarios['nome']; ?>"><?php echo $row_usuarios['nome'];?></option> <?php
+                            <option value="<?php echo $row_usuarios['nome'];?>"><?php echo $row_usuarios['nome'];?></option> <?php
                           }                            
                       ?>
                   </select>
                 </div>
               </div>
-
+              
+              <!--
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Color</label>
                 <div class="col-sm-10">
@@ -225,6 +226,7 @@
                   </select>
                 </div>
               </div>
+              -->
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Início</label>

@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                                <button type="button" class="btn btn-info" style='width:150px;'><a href="../index.php" style="text-decoration:none; color:white;">Página inicial</a></button>		
+                            <a href="../index.php" style="text-decoration:none; color:white;"><button type="button" class="btn btn-info" style='width:150px;'>Página inicial</button></a>
                         </li>
  
                     </ul>
@@ -81,42 +81,4 @@
             </div> 
 	</body>
 
-    <script>
-
-        var secao = "<?php
-            if(isset($_SESSION['msg'])){
-                echo $_SESSION['msg'];
-                unset($_SESSION['msg']);
-            }
-        ?>" 
-
-        var container_sucesso = document.querySelector('#msg-alert-sucesso');
-        var container_erro = document.querySelector('#msg-alert-erro');
-
-        var container_sucesso_apagar = document.querySelector('#msg-alert-sucesso-apagar');
-        var container_erro_apagar = document.querySelector('#msg-alert-erro-apagar');
-
-        function exibir(info){
-            if(info == "sucesso"){
-                container_sucesso.style.display = 'block';  
-            }else if(info == "erro"){
-                container_erro.style.display = 'block';  
-            }else if(info == "sucesso_apagar"){
-                container_sucesso_apagar.style.display = 'block';
-            }else if(info == "erro_apagar"){
-                container_erro_apagar.style.display = 'block';  
-            }
-        }
-
-        function apagar(info){
-            container_sucesso.style.display = 'none';
-            container_erro.style.display = 'none';
-            container_sucesso_apagar.style.display = 'none';
-            container_sucesso_apagar.style.display = 'none';
-        }
-
-        exibir(secao);
-        setTimeout(apagar, 2500);
-
-    </script>
 </html>

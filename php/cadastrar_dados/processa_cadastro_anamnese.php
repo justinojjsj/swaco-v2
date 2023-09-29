@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	error_reporting(0);
+	//error_reporting(0);
 
 	include '../conexao.php';
 
@@ -34,34 +34,37 @@
 	$escovacao 		 = $_POST['escovacao'];
 	$fio_dental		 = $_POST['fio_dental'];
 
-	//NAO ESTAFUNCIONANDO O RECEVIMETNO DESSA VARIAVEL QUE VEM DO VERIFICA_CADASTRO_ANAMNESE
 	if(isset($_SESSION['cadastrar_pac'])){		
 		$cadastrar_pac 	 = $_SESSION['cadastrar_pac'];
-		echo $cadastrar_pac;
+		//echo "processa_cadastro_anamnese  = ".$cadastrar_pac."\n\n\n";
 		unset($_SESSION['cadastrar_pac']);
 	}
-	
 	
 	$sql = "INSERT INTO dados_anamnese VALUES";
 	$sql .= "(NULL,'$cpf','$problem','$visit','$medical','$allergies','$allergies_desc','$heart','$heart_desc','$benz','$benz_problem','$dipirona','$dip_problem','$pressure','$press_med','$press_medicine','$renal','$renal_problem','$diabete','$hepatite','$anest','$anest_problem','$protese','$marcap','$transf','$droga','$fuma','$gravida','$escovacao','$fio_dental',NOW(),NULL)";	
 
-
 	if($cadastrar_pac == 0){		
 		
 		if ($conn->query($sql) === TRUE) {
-			//echo "DADOS DE ANAMNESE CADASTRADO EM USUARIO EXISTENTE";
-			$_SESSION['msg2'] = "sucesso";
-			header("Location: ../index.php");	
+			//echo "CADASTRADO DE ANAMNESE EM USUARIO QUE NAO EXISTE - CADASTRAR ANAMNESE E INFORMAR PARA CADASTRAR DADOS PESSOAIS";
+
+			$_SESSION['msg2'] = "cpf_nop";
+			//header("Location: ./cadastro_paciente.php"); Comentei pq com esse método a mensagem de alerta não estava aparecendo
+
+			include 'cadastro_paciente.php';
+		
 		} else {
 			$_SESSION['msg2'] = "erro";
 		}
 		
-	}else{
+	}elseif($cadastrar_pac == 1){			
 
 		if ($conn->query($sql) === TRUE) {
-			//echo "DADOS DE ANAMNESE CADASTRADO MAS USUÁRIO NAO EXISTE";
-			$_SESSION['msg2'] = "cpf_nop";
-			include 'cadastro_dados.php';
+			//echo "Dados pessoais usuário cadastrado - Anamnese cadastrada agora - Usuário Ok ";
+
+			$_SESSION['msg2'] = "sucesso";
+			header("Location: ../index.php");
+
 		} else {
 			$_SESSION['msg2'] = "erro";
 		}

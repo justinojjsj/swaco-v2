@@ -2,7 +2,7 @@
 	session_start();
 	error_reporting(0);
 
-	include 'conexao.php';
+	include '../conexao.php';
 
 	$problem 		 = $_POST['problem'];
 	$cpf 		 	 = $_POST['CPF'];
@@ -77,36 +77,46 @@
 					//return "CPF inválido";
 					return 1;
 				}
-			}
-	 
+			}	 
 			//return "CPF válido";
 			return 0;
 		}
 	}
 	
-//	echo validaCPF($cpf);
+	//VERIFICAR SE USUÁRIO EXISTE NO dados_paciente 
+
+	$verifica_usuario_dados = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
+	$resultado_usuario_dados = mysqli_query($conn, $verifica_usuario_dados);
+
+
+	//VERIFICAR SE USUÁRIO EXISTE NO dados_anamnese 
+
+	$verifica_usuario_anamnese = "SELECT * FROM dados_anamnese WHERE CPF='$cpf'";		
+	$resultado_usuario_anamnese = mysqli_query($conn, $verifica_usuario_anamnese);
 
 	if (validaCPF($cpf)==0){
-		//echo "VALIDO";
 
-		$result_user = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
-		$resultado_user = mysqli_query($conn, $result_user);
-		
-		if(mysqli_affected_rows($conn)==1){
-			//cpf valido e encontrado no banco de dados tabela dados_paciente;
-			$_SESSION['cadastrar_pac'] = "0";
+		if((mysqli_num_rows($resultado_usuario_anamnese)==0) and mysqli_num_rows($resultado_usuario_dados)==0){
+			$_SESSION['cadastrar_pac'] = "0";	
+			include 'processa_cadastro_anamnese.php';
+		}elseif((mysqli_num_rows($resultado_usuario_anamnese)==0) and mysqli_num_rows($resultado_usuario_dados)==1){
+			$_SESSION['cadastrar_pac'] = "1";
+			include 'processa_cadastro_anamnese.php';
+		}elseif((mysqli_num_rows($resultado_usuario_anamnese)==1) and mysqli_num_rows($resultado_usuario_dados)==0){
+			$CPF = $cpf;
+			$_SESSION['CPF'] = $CPF;
+			include '../editar_dados/editar_anamnese.php';		
+		}elseif((mysqli_num_rows($resultado_usuario_anamnese)==1) and mysqli_num_rows($resultado_usuario_dados)==1){
+			$_SESSION['CPF'] = $CPF;
+			$_SESSION['msg2'] = "cpf_nop";
+			include '../editar_dados/editar_anamnese.php';		
 		}else{
-			//echo "cpf valido, mas usuario nao encontrado na tabela dados_paciente;
-			$_SESSION['cadastrar_pac'] = "1";	
+			echo "Usuário duplicado no sistema";
 		}
-		include 'processa_cadastro_anamnese.php';
 	}else{
-		//echo "INVALIDO";
 		$_SESSION['msg2'] = "cpf_invalido";
-		include 'cadastro_anamnese.php';
-	}	
+		header("Location: ./cadastro_anamnese.php");	
+	}
 	
-	$conn->close();
-
-	
+	$conn->close();	
 ?>

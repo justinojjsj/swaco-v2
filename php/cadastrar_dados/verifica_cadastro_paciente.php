@@ -16,7 +16,6 @@
 	$state		     = $_POST['state'];
 	$erro 			 = 0;
 
-
 	//CODIGOS DE VERIFICAÇÃO DESATIVADO POR QUESTOES DE TEMPO DE ENTREGA DO PROJETO
 
 	//Verifica se o campo nome não está em branco
@@ -51,64 +50,81 @@
 	*/
 	//Verifica se não houve erro - neste caso chama a include para inserir os dados
 
-	function validaCPF($cpf) {
-		// Verifica se o número foi informado
-		if(empty($cpf)) {
-			return "O CPF é obrigatório";
-		}
-	 
-		// Elimina possível máscara
-		$cpf = preg_replace('/[^0-9]/', '', $cpf);
-		$cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
-		 
-		// Verifica se o número de dígitos informados é igual a 11
-		if (strlen($cpf) != 11) {
-			return "O CPF deve conter 11 dígitos";
-		}
-		// Verifica se nenhuma das sequências inválidas abaixo
-		// foi digitada. Caso afirmativo, retorna falso
-		else if ($cpf == '00000000000' || 
-			$cpf == '11111111111' || 
-			$cpf == '22222222222' || 
-			$cpf == '33333333333' || 
-			$cpf == '44444444444' || 
-			$cpf == '55555555555' || 
-			$cpf == '66666666666' || 
-			$cpf == '77777777777' || 
-			$cpf == '88888888888' || 
-			$cpf == '99999999999') {
-			//return "CPF inválido";
-			return 1;
-		 // Calcula os dígitos verificadores para verificar se o
-		 // CPF é válido
-		 } else {   
-			 
-			for ($t = 9; $t < 11; $t++) {
-				 
-				for ($d = 0, $c = 0; $c < $t; $c++) {
-					$d += $cpf[$c] * (($t + 1) - $c);
-				}
-				$d = ((10 * $d) % 11) % 10;
-				if ($cpf[$c] != $d) {
-					//return "CPF inválido";
-					return 1;
-				}
-			}	 
-			//return "CPF válido";
-			return 0;
+	//### VERIFICAÇÃO SE USUÁRIO JÁ EXISTE ###
+
+	include '../conexao.php';
+	$result_user = "SELECT * FROM dados_paciente WHERE CPF='$cpf'";		
+	$resultado_user = mysqli_query($conn, $result_user);
+	//echo mysqli_affected_rows($conn);
+	
+	if(mysqli_affected_rows($conn)==1){
+		$CPF = $cpf;
+		$_SESSION['CPF'] = $CPF;
+		//echo $_SESSION['CPF'];
+		include '../editar_dados/editar_usuario.php';
+	}else{
+
+		//### VALIDAÇÃO DE CPF ###
+
+		function validaCPF($cpf) {
+			// Verifica se o número foi informado
+			if(empty($cpf)) {
+				return "O CPF é obrigatório";
+			}
+		
+			// Elimina possível máscara
+			$cpf = preg_replace('/[^0-9]/', '', $cpf);
+			$cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
+			
+			// Verifica se o número de dígitos informados é igual a 11
+			if (strlen($cpf) != 11) {
+				return "O CPF deve conter 11 dígitos";
+			}
+			// Verifica se nenhuma das sequências inválidas abaixo
+			// foi digitada. Caso afirmativo, retorna falso
+			else if ($cpf == '00000000000' || 
+				$cpf == '11111111111' || 
+				$cpf == '22222222222' || 
+				$cpf == '33333333333' || 
+				$cpf == '44444444444' || 
+				$cpf == '55555555555' || 
+				$cpf == '66666666666' || 
+				$cpf == '77777777777' || 
+				$cpf == '88888888888' || 
+				$cpf == '99999999999') {
+				//return "CPF inválido";
+				return 1;
+			// Calcula os dígitos verificadores para verificar se o
+			// CPF é válido
+			} else {   
+				
+				for ($t = 9; $t < 11; $t++) {
+					
+					for ($d = 0, $c = 0; $c < $t; $c++) {
+						$d += $cpf[$c] * (($t + 1) - $c);
+					}
+					$d = ((10 * $d) % 11) % 10;
+					if ($cpf[$c] != $d) {
+						//return "CPF inválido";
+						return 1;
+					}
+				}	 
+				//return "CPF válido";
+				return 0;
+			}
+		}	
+		
+		//echo $cpf;
+		//echo validaCPF($cpf);
+		
+		if (validaCPF($cpf)==1){
+			$_SESSION['msg2'] = "cpf_invalido";
+			//header("Location: cadastro_paciente.php");
+			include 'cadastro_paciente.php';
+		}else{
+			if ($erro == 0) {
+				include 'processa_cadastro_paciente.php';
+			}		
 		}
 	}	
-	
-	//echo $cpf;
-	//echo validaCPF($cpf);
-	
-	if (validaCPF($cpf)==1){
-		$_SESSION['msg2'] = "cpf_invalido";
-		//header("Location: cadastro_paciente.php");
-		include 'cadastro_paciente.php';
-	}
-
-	if ($erro == 0) {
-		include 'processa_cadastro_paciente.php';
-	}
 ?>

@@ -1,8 +1,18 @@
 <?php
     session_start();
     include_once("conexao.php");
-    $id_pac = filter_input(INPUT_GET, 'id_pac', FILTER_SANITIZE_NUMBER_INT);
-    $result_usuario = "SELECT * FROM dados_paciente WHERE id_pac = '$id_pac'";
+
+
+    if(filter_input(INPUT_GET, 'id_pac')){
+        $id_pac = filter_input(INPUT_GET, 'id_pac', FILTER_SANITIZE_NUMBER_INT);
+        $result_usuario = "SELECT * FROM dados_paciente WHERE id_pac = '$id_pac'";
+    }elseif(filter_input(INPUT_POST, 'CPF')){
+        $CPF = filter_input(INPUT_POST, 'CPF');
+        $result_usuario = "SELECT * FROM dados_paciente WHERE CPF = '$CPF'";
+    }
+
+    //$id_pac = filter_input(INPUT_GET, 'id_pac', FILTER_SANITIZE_NUMBER_INT);
+    //$result_usuario = "SELECT * FROM dados_paciente WHERE id_pac = '$id_pac'";
     $resultado_usuario = mysqli_query($conn, $result_usuario);
     $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 ?>
@@ -22,7 +32,7 @@
     <div class="middle">
         <div id="home-dashboard">
 
-            <?php include "menu.php"; ?>
+            <?php include "return-menu.php"; ?>
 
             <div id="information" class="form-group">
                 </br>

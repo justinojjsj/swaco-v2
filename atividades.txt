@@ -24,20 +24,18 @@ SWACO-V2
     ### AGENDA DO DENTSTA
 
         -> Campo cor no banco de dados agora deve ser NULL e varchar(30)
-
-        *** CORRIGIR CAMPO DE COLOCAR DATAS (TIRAR MASCARA)
     
     ### ÁREA RESTRITA
     
         *** Implementar item de notificação para usuários que tem dados pessoais cadastrados, mas não tem anamense
         *** Implementar item de notificação botão para usuários que tem anamnese cadastrada, mas não tem dados pessoais
 
-        CONSULTAS OK                
+        CONSULTAS OK     
+
+        EDITAR DADOS PESSOAIS OK           
         
         EDITAR ANAMNESE 
                 *** Colocar um botão para imprimir a anamnese
 
-        EDITAR DADOS PESSOAIS
 
-                *** Quando editar nome, alterar também a tabel events  
                         

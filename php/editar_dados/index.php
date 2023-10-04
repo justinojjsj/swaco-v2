@@ -1,10 +1,3 @@
-<?php
-	session_start();
-	include_once('conexao.php');
-	$sql = "SELECT * FROM dados_paciente ORDER BY nome ASC";
-	$result = $conn->query($sql);
-?>
-
 <html>
 	<head>
 
@@ -35,7 +28,6 @@
             
         </script>
         
-
 	</head>
 
 	<body>
@@ -77,6 +69,37 @@
                 </ul>
 
                 <?php include "./home-padrao.php"; ?>
+
+                <?php
+                    //session_start();
+                    include_once('conexao.php');
+
+                    $anamnese = "SELECT * FROM dados_anamnese";
+                    $resultado_anamnese = mysqli_query($conn, $anamnese);
+                    
+                    while($row_anamnese = mysqli_fetch_assoc($resultado_anamnese)){
+                        $dados = "SELECT * FROM dados_paciente WHERE CPF=$row_anamnese[CPF]";
+                        $resultado_dados = mysqli_query($conn, $dados);
+                        $row_dados = mysqli_fetch_assoc($resultado_dados);
+
+                        if($row_anamnese['CPF'] != $row_dados['CPF']){
+                            //echo $row_anamnese['CPF'];
+                            //echo ' ';
+                        ?>
+                            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e25353;">
+                                <a class="navbar-brand">ANAMNESE SEM DADOS PESSOAIS CADASTRADOS</a>    
+                            </nav>
+                        
+                        <?php
+                            include "./home-padrao-anamnese.php";
+
+                        }else{
+                            //echo $row_anamnese['CPF'];
+                        }
+                    }    
+                ?>
+
+
 
             </div> 
 	</body>

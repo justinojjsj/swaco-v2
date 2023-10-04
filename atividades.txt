@@ -26,9 +26,9 @@ SWACO-V2
         -> Campo cor no banco de dados agora deve ser NULL e varchar(30)
     
     ### ÁREA RESTRITA
-    
-        *** Implementar item de notificação para usuários que tem dados pessoais cadastrados, mas não tem anamense
-        *** Implementar item de notificação botão para usuários que tem anamnese cadastrada, mas não tem dados pessoais
+
+        INDEX OK
+            -> Deixar a mostra pelo menos um usuário sem anamnese e um usuário sem dados pessoais
 
         CONSULTAS OK     
 

@@ -1,5 +1,6 @@
 <?php
 	//session_start();
+	error_reporting(0);
 	include_once('conexao.php');
 	$sql = "SELECT * FROM dados_paciente ORDER BY nome ASC";
 	$result = $conn->query($sql);
@@ -46,10 +47,10 @@
 						
 					</td>";
 
+					//Procurando usuários que possuem cadastro de dados pessoais, mas não possuem anmnese.
 					$sql2 = "SELECT * FROM dados_anamnese WHERE CPF=$user_data[CPF]";
 					$resultado_usuario2 = mysqli_query($conn, $sql2);
 					$row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
-
 					
 					if ($row_usuario2['CPF']){
 

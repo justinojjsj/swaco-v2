@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    //error_reporting(0);
+
+    if(filter_input(INPUT_GET, 'CPF')){
+        $CPF = filter_input(INPUT_GET, 'CPF');
+    }elseif(filter_input(INPUT_POST, 'CPF')){
+        $CPF = filter_input(INPUT_POST, 'CPF');
+    }else{
+        $CPF = 'Digite seu CPF (somente com números)';
+    }
+?>
+
 <html>
     <head>
         <?php include "./header.php"; ?>
@@ -48,7 +61,7 @@
                         </div>
 
                         <div class="answer">
-                            <input type="text" name="CPF" placeholder="Somente números" required="" maxlength="11" onkeypress="formatar_mascara(this,'###########')"/>
+                            <input type="text" name="CPF" value="<?php echo $CPF; ?>" onfocus="this.value='';" placeholder="Somente números" required="" maxlength="11" onkeypress="formatar_mascara(this,'###########')"/>
                         </div>
                     </div>
 

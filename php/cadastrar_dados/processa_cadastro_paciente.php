@@ -21,15 +21,26 @@
 	$sql = "INSERT INTO dados_paciente VALUES";
 	$sql .= "(NULL,'$cpf','$nome','$celular','$idade','$estado_civil','$email','$work','$gender','$convenio','$CEP','$ad_number','$street','$district','$city','$state',NOW(),NULL)";
 
+	
+	//Verificando se usuário já tem anamnese cadastrada
+	$anamnese = "SELECT * FROM dados_anamnese WHERE CPF=$cpf";
+	$resultado_anamnese = mysqli_query($conn, $anamnese);	
+	
 	if ($conn->query($sql) === TRUE) {
-		$CPF = $cpf;
-		$_SESSION['msg'] = $CPF;
-		//$_SESSION['msg2'] = "sucesso";
-		header("Location: ./cadastro_anamnese.php");	
-		//include 'cadastro_anamnese.php';
+
+		if(mysqli_fetch_assoc($resultado_anamnese)){
+			$_SESSION['msg2'] = "sucesso";
+			header("Location: ../index.php");	
+		}else{
+			$CPF = $cpf;
+			$_SESSION['msg'] = $CPF;			
+			header("Location: ./cadastro_anamnese.php");	
+			//include 'cadastro_anamnese.php';
+		}
 	} else {
 		$_SESSION['msg2'] = "erro";
 	}
 	
 	$conn->close();
+
 ?>

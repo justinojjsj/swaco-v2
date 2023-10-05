@@ -30,7 +30,11 @@ SWACO-V2
         INDEX OK
             -> Deixar a mostra pelo menos um usuário sem anamnese e um usuário sem dados pessoais
 
-        CONSULTAS OK     
+            colocar cont nos pacientes e consultas
+
+        CONSULTAS 
+
+            *** Arruma número da consulta que está sendo editada.     
 
         EDITAR DADOS PESSOAIS OK           
         

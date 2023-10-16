@@ -1,8 +1,9 @@
 <?php
 	session_start();
 	include_once('conexao.php');
-	$nome = filter_input(INPUT_GET, 'nome');
-	$sql = "SELECT * FROM events WHERE title = '$nome' ORDER BY id ASC";
+	//$nome = filter_input(INPUT_GET, 'nome');
+	$CPF = filter_input(INPUT_GET, 'CPF');
+	$sql = "SELECT * FROM events WHERE color = '$CPF' ORDER BY id ASC";
 	$result = $conn->query($sql);
 ?>
 

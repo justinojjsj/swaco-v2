@@ -33,7 +33,7 @@
         <div id="home-dashboard">
 
             <div id="retorno">
-                <a href="./consultas.php?nome=<?php echo $row_usuario['title']; ?>" class="linkum">
+                <a href="./consultas.php?CPF=<?php echo $row_usuario['color']; ?>" class="linkum">
                     <div id="btn-return" class="btn-home" style="width: 115px; height: 115px;!importante"></div>                    
                 </a>
             </div>
@@ -41,7 +41,7 @@
             <div id="information" class="form-group">
                 </br>
                 </br>
-                <p> Edição da consulta <?php echo $row_usuario['id']; ?> do paciente <?php echo $row_usuario['title']; ?> </p> 
+                <p> Edição da consulta do paciente <?php echo $row_usuario['title']; ?> </p> 
             </div>
             
             </br>

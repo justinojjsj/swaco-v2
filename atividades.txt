@@ -3,6 +3,8 @@ SWACO-V2
 
     ### DADOS PESSOAIS OK
 
+        *** Rescurso de aumentar a letra e alto contraste.
+
         cadastro_paciente OK
                 -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
 
@@ -12,7 +14,7 @@ SWACO-V2
 
         processa_cadastro_paciente OK        
 
-    ### FICHA DE ANAMNESE
+    ### FICHA DE ANAMNESE OK
 
         cadastro_anamnese OK
                 -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
@@ -32,14 +34,12 @@ SWACO-V2
 
             colocar cont nos pacientes e consultas
 
-        CONSULTAS 
-
-            *** Arruma número da consulta que está sendo editada.     
+        CONSULTAS  OK
 
         EDITAR DADOS PESSOAIS OK           
         
-        EDITAR ANAMNESE 
-                *** Colocar um botão para imprimir a anamnese
+        EDITAR ANAMNESE OK
+
 
 
                         

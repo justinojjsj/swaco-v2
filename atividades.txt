@@ -1,3 +1,46 @@
+REQUISITOS DO PI2:       
+        
+        Desenvolver um software com framework web  
+                -> Utilizando o Bootstrap adaptado com HTML e CSS próprios
+        
+        Utilize banco de dados                          
+                -> Utilizando banco de dados mysql, com acesso via phpmyadmin
+        
+        Inclua script web (Javascript) 
+                Tela verde (Dados Pessoais) e Tela laranja (Ficha de Anamnese):
+                        -> Movimentar botões nos cadastros (código próprio adaptado);
+                        -> Busca CEP base de dados CORREIOS em tempo real (código próprio adaptado);
+                Tela amarela (Agenda do Dentista):
+                        -> Utilizado para gerar o calendário (biblioteca fullcalendar adaptada);
+                Tela vermelha (Área restrita):
+                        -> Para gerar alertas de confirmação (jquery 1.8 e 1.9);
+                        -> Busca de usuários em tempo real no banco de dados (jquery 1.8 e 1.9);
+        
+        Nuvem
+                -> *** PHILLIPE E LEANDRO VERIFICAR, POR FAVOR ****
+
+        Uso de API
+                Tela amarela (Agenda do Dentista):
+                        -> Utilizando de PDO para acessar BD
+                Demais telas:
+                        -> Utilizando mysqli para acessar o BD
+
+        Acessibilidade
+
+                -> O aplicativo pode ser acessado do celular da pessoa, mas caso a pessoa não tenha, o dentista oferece um tablet emprestado.
+                -> No cadastro de dados pessoais os botões preveem o uso de pessoas daltônicas, pois possuem além da cor, o desenho identificador.
+
+                O que irei inserir:
+                        -> Inserir recurso para aumentar texto da tela;
+                        -> Colocar opção de alto contraste e modo noturno;
+
+        Controle de versão
+                -> Utilizando o GitHub
+        
+        Testes
+                -> *** LEANDRO (já que Fábio fará o relatório final)***
+
+
 SWACO-V2
     #Melhorias e correções no código
 
@@ -38,8 +81,4 @@ SWACO-V2
 
         EDITAR DADOS PESSOAIS OK           
         
-        EDITAR ANAMNESE OK
-
-
-
-                        
+        EDITAR ANAMNESE OK                     

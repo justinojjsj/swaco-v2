@@ -31,8 +31,8 @@ REQUISITOS DO PI2:
                 -> No cadastro de dados pessoais os botões preveem o uso de pessoas daltônicas, pois possuem além da cor, o desenho identificador.
 
                 O que irei inserir:
-                        -> Inserir recurso para aumentar texto da tela;
-                        -> Colocar opção de alto contraste e modo noturno;
+                        -> Inserir recurso para aumentar texto da tela; OK
+                        -> Colocar opção de alto contraste e modo noturno; OK
 
         Controle de versão
                 -> Utilizando o GitHub
@@ -61,6 +61,8 @@ SWACO-V2
 
         cadastro_anamnese OK
                 -> Recolocar required="" nos campos, para tornar os campos obrigatórios 
+
+                *** CORRIGIR BOTAO DE AUMENTAR A FONTE
 
         verifica_cadastro_anamnese OK
                         

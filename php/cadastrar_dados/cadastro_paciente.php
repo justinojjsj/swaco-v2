@@ -14,6 +14,12 @@
 <html>
     <head>
         <?php include "./header.php"; ?>
+
+        <link rel="alternate stylesheet" href="../../css/escuro.css" title="2">
+        <link rel="alternate stylesheet" href="../../css/claro.css" title="1">
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>        
+        <script type="text/javascript" src="../../js/contraste.js"></script>
+        
     </head>
 
     <?php include "../msg-alertas-home.php"; ?>    
@@ -26,7 +32,10 @@
         <div class="middle">
             <div id="home-dashboard">
 
-                <?php include "./return-menu.php"; ?>
+                <div id="menu-topo">
+                    <?php include "./return-menu.php"; ?>
+                    <?php include "./btn-contraste.php"; ?>
+                </div>
 
                 <div id="information" class="form-group">
                     </br>

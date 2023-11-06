@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Cor fundo</title>
-<link rel="alternate stylesheet" href="escuro.css" title="2">
-<link rel="alternate stylesheet" href="claro.css" title="1">
+        <link rel="alternate stylesheet" href="escuro.css" title="2">
+        <link rel="alternate stylesheet" href="claro.css" title="1">
 
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="js/alterar.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+        <script type="text/javascript" src="js/alterar.js"></script>
 
 </head>
 <body>

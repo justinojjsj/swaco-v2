@@ -161,6 +161,38 @@ body{
    3. ANAMNESE
 ------------------------------------------------------------------------- */
 
+/* Menu de topo dos botões voltar, contraste e tamanho do texto*/
+#menu-topo{	
+	-background-color: rgb(255, 255, 255);
+	-border: 5px;
+	-border-style: solid;
+	-border-color: #0f7dc5;
+	-border-radius: 20px;
+	-height: 160px;
+	width: 800px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+/* Botão de acessibilidade de contraste */
+#click{
+	background-color: #f4f9fc;
+	background-image: url("../images/contraste.png") !important;
+	background-size: 114px 114px;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 3px;
+	border-style: solid;
+	border-radius: 600px;
+	border-color: #0f7dc5;
+	margin-top: 0%;
+	width: 50px;	
+	height: 50px;
+}
+
 #btn-return{
 	background-color: #f4f9fc;
 	background-image: url("../images/btn-return.png") !important;

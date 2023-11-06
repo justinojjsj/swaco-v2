@@ -164,9 +164,9 @@ body{
 /* Menu de topo dos botões voltar, contraste e tamanho do texto*/
 #menu-topo{	
 	-background-color: rgb(255, 255, 255);
-	-border: 5px;
-	-border-style: solid;
-	-border-color: #0f7dc5;
+	border: 5px;
+	border-style: solid;
+	border-color: #0f7dc5;
 	-border-radius: 20px;
 	-height: 160px;
 	width: 800px;

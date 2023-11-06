@@ -15,6 +15,7 @@
     <head>
         <?php include "./header.php"; ?>
 
+        <!-- Acessibilidade -->
         <link rel="alternate stylesheet" href="../../css/escuro.css" title="2">
         <link rel="alternate stylesheet" href="../../css/claro.css" title="1">
         <script src="https://code.jquery.com/jquery-1.11.3.js"></script>        

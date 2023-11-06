@@ -20,6 +20,12 @@
                 $CPF = 'Digite seu CPF (somente com números)';
             } 
         ?>
+
+        <!-- Acessibilidade -->
+        <link rel="alternate stylesheet" href="../../css/escuro.css" title="2">
+        <link rel="alternate stylesheet" href="../../css/claro.css" title="1">
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>        
+        <script type="text/javascript" src="../../js/contraste.js"></script>
     </head>
 
     <body>         
@@ -35,7 +41,10 @@
 
                     <form method="POST"	action="./verifica_cadastro_anamnese.php">
 
-                        <?php include "./return-menu.php"; ?>
+                        <div id="menu-topo">
+                            <?php include "./return-menu.php"; ?>
+                            <?php include "./btn-contraste.php"; ?>
+                        </div>
 
                         <!-- INÍCIO DA APRESENTACAO --->
 

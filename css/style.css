@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------- */
 * {
 	font-family: 'Roboto', sans-serif;
-	font-size: 14px;
+	-font-size: 14px;
 	margin: 0;
 	padding: 0;
 }
@@ -18,6 +18,7 @@ body{
 	flex-direction: column;
 	background-image: url("../images/pattern.png"),url('../images/img-3.png');
 	background-position: 48% 61%;
+	font-size: 20px;
 }
 
 .top {
@@ -164,9 +165,9 @@ body{
 /* Menu de topo dos botões voltar, contraste e tamanho do texto*/
 #menu-topo{	
 	-background-color: rgb(255, 255, 255);
-	border: 5px;
-	border-style: solid;
-	border-color: #0f7dc5;
+	-border: 5px;
+	-border-style: solid;
+	-border-color: #0f7dc5;
 	-border-radius: 20px;
 	-height: 160px;
 	width: 800px;
@@ -179,7 +180,7 @@ body{
 
 /* Botão de acessibilidade de contraste */
 #click{
-	background-color: #f4f9fc;
+	background-color: white;
 	background-image: url("../images/contraste.png") !important;
 	background-size: 114px 114px;
 	background-position: center;
@@ -191,6 +192,37 @@ body{
 	margin-top: 0%;
 	width: 50px;	
 	height: 50px;
+}
+
+#btn-maiszoom{
+	background-color: #f4f9fc;
+	background-image: url("../images/mais-zoom.png") !important;
+	background-size: 100px 100px;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 3px;
+	border-style: solid;
+	border-radius: 600px;
+	border-color: #0f7dc5;
+	margin-top: 0%;
+	width: 115px;	
+	height: 115px;
+}
+
+
+#btn-menoszoom{
+	background-color: #f4f9fc;
+	background-image: url("../images/menos-zoom.png") !important;
+	background-size: 100px 100px;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 3px;
+	border-style: solid;
+	border-radius: 600px;
+	border-color: #0f7dc5;
+	margin-top: 0%;
+	width: 115px;	
+	height: 115px;
 }
 
 #btn-return{
@@ -268,6 +300,16 @@ body{
 	height: 100px;
 }
 
+#information{
+	-background-color: rgb(255, 255, 255);
+	border: 5px;
+	border-style: solid;
+	border-color: #0f7dc5;
+	border-radius: 20px;
+	height: auto;
+	width: 800px;
+}
+
 .form-group{
 	background-color: rgb(255, 255, 255);
 	border: 5px;
@@ -286,7 +328,7 @@ body{
 
 .form-group p2{
 	font-family: 'Calibri';
-	font-size: 20px;
+	-font-size: 20px;
 }
 
 .form-group p3{
@@ -310,13 +352,13 @@ body{
 	border-style: solid;
 	border-color: #0f7dc5;
 	border-radius: 20px;
-	height: 450px;
+	height: 420px;
 	width: 800px;	
 }
 
 .form-address p2{
 	font-family: 'Calibri';
-	font-size: 20px;
+	-font-size: 20px;
 }
 
 .question{

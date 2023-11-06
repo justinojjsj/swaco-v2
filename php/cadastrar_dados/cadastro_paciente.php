@@ -19,12 +19,11 @@
         <link rel="alternate stylesheet" href="../../css/escuro.css" title="2">
         <link rel="alternate stylesheet" href="../../css/claro.css" title="1">
         <script src="https://code.jquery.com/jquery-1.11.3.js"></script>        
-        <script type="text/javascript" src="../../js/contraste.js"></script>
-        
+        <script type="text/javascript" src="../../js/contraste.js"></script>     
     </head>
 
-    <?php include "../msg-alertas-home.php"; ?>    
-
+    <?php include "../msg-alertas-home.php"; ?>  
+    
     <body>         
         <div class="top">
             </br>
@@ -36,6 +35,7 @@
                 <div id="menu-topo">
                     <?php include "./return-menu.php"; ?>
                     <?php include "./btn-contraste.php"; ?>
+                    <?php include "./btn-fonte.php"; ?>
                 </div>
 
                 <div id="information" class="form-group">
@@ -220,5 +220,8 @@
             </br>
         </div>   
     </body>
+
+    <!-- Acessibilidade: Aumenta o tamanho da fonte -->
+    <script type="text/javascript" src="../../js/fonte.js"></script>
 
 </html>

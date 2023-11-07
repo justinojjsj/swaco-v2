@@ -22,9 +22,12 @@
 		</thead>
 		<tbody>
 			<?php
+				$contador = 0;
 				while($user_data = mysqli_fetch_assoc($result)){
+					$contador++;
+
 					echo "<tr>";
-					echo "<td>".$user_data['id_pac']."</td>";
+					echo "<td>".$contador."</td>";
 					echo "<td>".$user_data['nome']."</td>";
 					echo "<td>".$user_data['CPF']."</td>";
 					echo "<td>".$user_data['celular']."</td>";

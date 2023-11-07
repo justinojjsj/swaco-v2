@@ -5,9 +5,8 @@
 
 <html>
     
-    <?php include "../msg-alertas-home.php"; ?>       
+    <?php include "../msg-alertas-home.php"; ?>   
     
-
     <head>
         <?php 
             include "./header.php"; 
@@ -37,15 +36,15 @@
             
             <div id="home-dashboard">
 
+                <div id="menu-topo">
+                        <?php include "./return-menu.php"; ?>
+                        <?php include "./btn-contraste.php"; ?>
+                        <?php include "./btn-fonte.php"; ?>
+                    </div>
+
                 <div class="line">
 
                     <form method="POST"	action="./verifica_cadastro_anamnese.php">
-
-                        <div id="menu-topo">
-                            <?php include "./return-menu.php"; ?>
-                            <?php include "./btn-contraste.php"; ?>
-                            <?php include "./btn-fonte.php"; ?>
-                        </div>
 
                         <!-- INÍCIO DA APRESENTACAO --->
 
@@ -685,10 +684,10 @@
         </div>   
 
         <script type="text/javascript" src="../../js/question-hidden.js"></script>  
-        
-        <!-- Acessibilidade: Aumenta o tamanho da fonte -->
-        <script type="text/javascript" src="../../js/fonte.js"></script>
-
+    
     </body>
+
+    <!-- Acessibilidade: Aumenta o tamanho da fonte -->
+    <script type="text/javascript" src="../../js/fonte.js"></script>
 
 </html>
